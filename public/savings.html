@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Savings Goals - Personal Finance Tracker</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="app-body">
+  <div class="app-layout">
+    <aside class="sidebar"><div data-nav></div></aside>
+    <main class="content">
+      <header class="topbar">
+        <div><h1>Savings Goals</h1><p class="muted">Set goals, add contributions and track progress.</p></div>
+        <button class="btn btn-primary" id="addGoalBtn">+ New goal</button>
+      </header>
+
+      <section class="card">
+        <div id="goalList" class="goal-grid"></div>
+      </section>
+    </main>
+  </div>
+
+  <div class="modal hidden" id="goalModal">
+    <div class="modal-box">
+      <div class="modal-head"><h3 id="modalTitle">New savings goal</h3><button class="modal-close" id="modalClose">&times;</button></div>
+      <form id="goalForm">
+        <input type="hidden" id="goalId" />
+        <div class="form-group">
+          <label>Goal name</label>
+          <input type="text" id="goalName" class="input" required placeholder="e.g. Emergency fund" />
+        </div>
+        <div class="form-group">
+          <label>Target amount</label>
+          <input type="number" id="goalTarget" class="input" min="1" step="0.01" required placeholder="0.00" />
+        </div>
+        <div class="form-group">
+          <label>Target date (optional)</label>
+          <input type="date" id="goalDate" class="input" />
+        </div>
+        <div class="form-group">
+          <label>Note</label>
+          <input type="text" id="goalNote" class="input" placeholder="Optional" />
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-outline" id="modalCancel">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal hidden" id="contribModal">
+    <div class="modal-box">
+      <div class="modal-head"><h3>Add contribution</h3><button class="modal-close" id="contribClose">&times;</button></div>
+      <input type="hidden" id="contribGoalId" />
+      <div class="form-group">
+        <label>Amount to add</label>
+        <input type="number" id="contribAmount" class="input" min="0.01" step="0.01" required placeholder="0.00" />
+      </div>
+      <div class="modal-actions">
+        <button type="button" class="btn btn-outline" id="contribCancel">Cancel</button>
+        <button type="submit" class="btn btn-primary" id="contribSave">Add</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+  <script src="js/demo.js"></script>
+  <script src="js/savings.js"></script>
+</body>
+</html>

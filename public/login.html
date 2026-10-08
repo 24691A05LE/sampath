@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Log in - Personal Finance Tracker</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="auth-body">
+  <div class="auth-card">
+    <div class="auth-brand">&#128176; FinanceTracker</div>
+    <h1>Welcome back</h1>
+    <p class="auth-sub">Log in to manage your finances.</p>
+
+    <div id="alertBox" class="alert hidden"></div>
+
+    <form id="loginForm">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" required placeholder="you@example.com" />
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" required placeholder="Your password" />
+      </div>
+      <button type="submit" class="btn btn-primary btn-block">Log in</button>
+    </form>
+
+    <p class="auth-alt">Don't have an account? <a href="register.html">Create one</a></p>
+    <a href="index.html" class="auth-back">&larr; Back to home</a>
+  </div>
+
+  <script src="js/app.js"></script>
+  <script src="js/demo.js"></script>
+  <script>
+    if (App.isLoggedIn()) window.location.href = 'dashboard.html';
+    const box = document.getElementById('alertBox');
+    function show(msg, ok) { box.textContent = msg; box.className = 'alert ' + (ok ? 'alert-success' : 'alert-error'); }
+    document.getElementById('loginForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = e.target.querySelector('button');
+      btn.disabled = true;
+      try {
+        const data = await App.api('/auth/login', {
+          method: 'POST',
+          body: JSON.stringify({ email: document.getElementById('email').value, password: document.getElementById('password').value }),
+        });
+        App.login(data.token, data.user);
+        window.location.href = data.user.role === 'admin' ? 'admin.html' : 'dashboard.html';
+      } catch (err) {
+        show(err.message, false);
+        btn.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>

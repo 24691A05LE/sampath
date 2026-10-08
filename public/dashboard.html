@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard - Personal Finance Tracker</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+</head>
+<body class="app-body">
+  <div class="app-layout">
+    <aside class="sidebar"><div data-nav></div></aside>
+    <main class="content">
+      <header class="topbar">
+        <div>
+          <h1>Dashboard</h1>
+          <p id="monthLabel" class="muted"></p>
+        </div>
+        <div class="topbar-actions">
+          <label class="control-label">Month</label>
+          <select id="monthSelect" class="input input-sm"></select>
+        </div>
+      </header>
+
+      <section class="stat-grid" id="statCards"></section>
+
+      <section class="card-row">
+        <div class="card">
+          <div class="card-head"><h3>Spending by category</h3></div>
+          <div class="chart-wrap"><canvas id="categoryChart"></canvas></div>
+        </div>
+        <div class="card">
+          <div class="card-head"><h3>Income vs Expense (last 6 months)</h3></div>
+          <div class="chart-wrap"><canvas id="comparisonChart"></canvas></div>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="card-head">
+          <h3>Budget status</h3>
+          <a href="budgets.html" class="btn btn-outline btn-sm">Manage budgets</a>
+        </div>
+        <div id="budgetList" class="list"></div>
+      </section>
+
+      <section class="card">
+        <div class="card-head">
+          <h3>Recent transactions</h3>
+          <a href="transactions.html" class="btn btn-outline btn-sm">View all</a>
+        </div>
+        <div id="recentList" class="list"></div>
+      </section>
+    </main>
+  </div>
+
+  <script src="js/app.js"></script>
+  <script src="js/demo.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+{
+  "name": "personal-finance-tracker",
+  "version": "1.0.0",
+  "description": "Personal Finance Tracker - track expenses, budgets, savings goals and interactive charts with admin management",
+  "main": "server.js",
+  "type": "commonjs",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "seed:admin": "node seed/seedAdmin.js"
+  },
+  "keywords": [
+    "finance",
+    "tracker",
+    "budget",
+    "expenses",
+    "savings"
+  ],
+  "author": "Personal Finance Tracker",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2"
+  }
+}
